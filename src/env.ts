@@ -1,7 +1,7 @@
 import dotenv from "dotenv-safe";
 import { z } from "zod";
 
-dotenv.config();
+dotenv.config({ allowEmptyValues: true });
 
 const envSchema = z.object({
   API_ID: z.string().min(1).transform(Number),
