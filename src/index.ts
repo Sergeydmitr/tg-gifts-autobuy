@@ -27,7 +27,7 @@ telegraf.launch();
 await client
   .start({
     phoneNumber: async () => env.PHONE_NUMBER,
-    password: async () => env.TFA_PASSWORD,
+    password: async () => env.TFA_PASSWORD as string,
     phoneCode: async () => {
       await telegraf.telegram.sendMessage(
         env.TELEGRAM_ID,
