@@ -13,7 +13,7 @@
 ### 1. Клонируйте репозиторий
 
 ```bash
-git clone https://github.com/your-username/telegram-star-gift-bot.git
+git clone git@github.com:m1stervlad/tg-gifts-autobuy.git
 cd telegram-star-gift-bot
 ```
 
@@ -40,7 +40,7 @@ API_ID=123456
 API_HASH=your_api_hash
 API_SESSION=         # оставить пустым при первом запуске — сессия сохранится автоматически
 MAXIMUM_PRICE=100    # максимальная цена подарка в звездах
-MAXIMUM_SUPPLY=500   # максимальное количество доступных штук
+MAXIMUM_SUPPLY=500   # максимальное количество выпущенных подарков
 ```
 
 ### 5. Запустите скрипт
