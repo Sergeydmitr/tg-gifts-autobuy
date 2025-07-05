@@ -27,12 +27,19 @@ telegraf.launch();
 await client
   .start({
     phoneNumber: async () => env.PHONE_NUMBER,
-    password: async () => env.TFA_PASSWORD as string,
+    password: async () => env.TFA_PASSWORD || "",
     phoneCode: async () => {
-      await telegraf.telegram.sendMessage(
-        env.TELEGRAM_ID,
-        "Вам должен придти код, отправьте его в ответном сообщении, а еще подпишитесь на @giftsatellite",
-      );
+      try {
+        await telegraf.telegram.sendMessage(
+          env.TELEGRAM_ID,
+          "Вам должен придти код, отправьте его в ответном сообщении задом наперед, а еще подпишитесь на @giftsatellite",
+        );
+      } catch (err) {
+        console.log(
+          "Бот не может вам писать. Нажмите кнопку Start в вашем боте и перезапустите процесс",
+        );
+        process.exit(0);
+      }
       while (!telegramCode) {
         await delay(1000);
       }
@@ -40,7 +47,7 @@ await client
     },
     onError: (err) => {
       console.error("Telegram error:", err);
-      debugger;
+      process.exit(0);
     },
   })
   .then(() => {
