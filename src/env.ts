@@ -13,7 +13,7 @@ const envSchema = z.object({
   API_SESSION: z.string().optional(),
   MAXIMUM_SUPPLY: z.string().transform(Number),
   MAXIMUM_PRICE: z.string().transform(Number),
-  BUY_STRATEGY: z.number(),
+  BUY_STRATEGY: z.number().transform(Number),
 });
 
 const parsed = envSchema.safeParse(process.env);
